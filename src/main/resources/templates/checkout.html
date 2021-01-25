@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Spec Demo</title>
+	</head>
+	<body>
+		<h1>Checkout</h1>
+		<form action="#" th:action="@{/checkout}" th:object="${checkoutForm}" method="POST" enctype="multipart/form-data">
+			<div display="inline-block">
+				<label for="tool">Tool Code:</label>
+				<select name="toolCode" id="toolCode" th:field="*{toolCode}" >
+				  <option th:each="tool, stats : ${tools}" th:text="${tool.toolCode}" th:value="${tool.toolCode}"></option><!-- I would normally use toolId as value, but Spec Requires receiving tool code as input. -->
+				</select>
+			</div>
+			<div id="toolCodeError" style="color:red" th:if="${#fields.hasErrors('toolCode')}" th:errors="*{toolCode}"></div>
+			<div display="inline-block">
+				<label for="rentalDayCount">Rental Day Count:</label>
+				<input id="rentalDayCount" type="text" name="rentalDayCount" th:field="*{rentalDayCount}" />
+			</div>
+			<div id="rentalDayCountError" style="color:red" th:if="${#fields.hasErrors('rentalDayCount')}" th:errors="*{rentalDayCount}"></div>
+			<div display="inline-block">
+				<label for="discountPercent">Discount Percent:</label>
+				<input id="discountPercent" type="text" name="discountPercent" th:field="*{discountPercent}" />
+			</div>
+			<div id="discountPercentError" style="color:red" th:if="${#fields.hasErrors('discountPercent')}" th:errors="*{discountPercent}"></div>
+			<div display="inline-block">
+				<label for="checkoutDate">Checkout Date:</label>
+				<input id="checkoutDate" type="text" name="checkoutDate" th:field="*{checkoutDate}" />
+			</div>
+			<div id="checkoutDateError" style="color:red" th:if="${#fields.hasErrors('checkoutDate')}" th:errors="*{checkoutDate}"></div>
+			</br>
+			<div display="inline-block">
+				<input type="submit">
+			</div>			
+		</form>
+	</body>	
+</html>

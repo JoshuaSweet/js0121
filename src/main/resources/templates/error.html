@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Spec Demo Error</title>
+	</head>
+	<body>
+		<h1 th:if="${errorHeader != null}" th:text=${errorHeader}></h1>
+		<h1 th:if="${errorHeader == null}">Error: Something went wrong.</h1>
+		<p th:if="${errorMessage != null}" th:text=${errorMessage}></p>
+		<p th:if="${errorMessage == null}" >Please contact a system administrator.</p>		
+	</body>	
+</html>
